@@ -3,7 +3,7 @@
 //
 import { initContract } from '@ts-rest/core';
 import { z } from 'zod';
-import { WordCollection } from './features/words/words.schema'; // Schema need for shared validation
+import { WordCollectionResponse } from './features/words/words.schema'; // Schema need for shared validation
 
 const c = initContract();
 
@@ -14,12 +14,13 @@ export const contract = c.router({
     query: z.object({
       pick: z
         .string()
-        .transform((val) => Number(val))
+        .transform(Number)
         .optional(),
     }),
     responses: {
-      200: WordCollection,
+      200: WordCollectionResponse,
+      // 400: z.object({ message: z.string() }),
     },
-    summary: 'Get random words where use can query picked words i.e. ?pick=10',
+    summary: 'Get random words where user can query picked words i.e. ?pick=10',
   },
 });
