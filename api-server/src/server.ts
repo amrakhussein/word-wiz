@@ -1,5 +1,5 @@
 import { app } from './app';
-import { getEnvValidationIssues } from './env';
+import { getEnvValidationIssues } from './types/env';
 
 // Ensure validated parsed env schema, Throws err if env schema violated `env.ts`
 getEnvValidationIssues();
